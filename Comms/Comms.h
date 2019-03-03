@@ -3,6 +3,7 @@
 
 #include <Arduino.h>
 #include <SoftwareSerial.h>
+#include <Utils.h>
 
 typedef struct{
     byte length;
@@ -33,14 +34,16 @@ enum MessageTypes
     RESPONSE_FOR_TEMPERATURE = 2,
     REQUEST_FOR_COLOR = 3,
     RESPONSE_FOR_COLOR = 4,
-    REQUEST_FOR_HEIGHT = 5,
-    RESPONSE_FOR_HEIGHT = 6,
-    REQUEST_BUZZ_ON = 7,
-    RESPONSE_BUZZ_ON = 8,
-    REQUEST_BUZZ_OFF = 9,
-    RESPONSE_BUZZ_OFF = 10,
-    REQUEST_ANGULAR_ORIENTATION = 11,
-    RESPONSE_ANGULAR_ORIENTATION = 12,
+    REQUEST_RAW_COLOR = 5,
+    RESPONSE_RAW_COLOR = 6,
+    REQUEST_FOR_HEIGHT = 7,
+    RESPONSE_FOR_HEIGHT = 8,
+    REQUEST_BUZZ_ON = 9,
+    RESPONSE_BUZZ_ON = 10,
+    REQUEST_BUZZ_OFF = 11,
+    RESPONSE_BUZZ_OFF = 12,
+    REQUEST_ANGULAR_ORIENTATION = 13,
+    RESPONSE_ANGULAR_ORIENTATION = 14,
 };
 
 typedef struct {
@@ -65,6 +68,10 @@ typedef struct{
 
 typedef struct{
    MessageHeader header; 
+}RawColorRequest;
+
+typedef struct{
+   MessageHeader header; 
 }HeightRequest;
 
 typedef struct{
@@ -81,9 +88,14 @@ typedef struct{
 }TemperatureResponse;
 
 typedef struct{
+   MessageHeader header;
+   MainColors color;
+}ColorResponse;
+
+typedef struct{
    MessageHeader header;    
    rgbColor color;
-}ColorResponse;
+}RawColorResponse;
 
 typedef struct{
    MessageHeader header;    
