@@ -4,11 +4,11 @@
 #include <Arduino.h>
 
 typedef enum {
-  NONE =  0,
-  RED =  16711680,
-  GREEN =  65280,
-  BLUE =  255,
-  WHITE =  16777216,
+  MAIN_NONE =  0,
+  MAIN_RED =  16711680,
+  MAIN_GREEN =  65280,
+  MAIN_BLUE =  255,
+  MAIN_WHITE =  16777216,
 } MainColors;
 
 class Utils
