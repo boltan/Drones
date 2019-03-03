@@ -1,7 +1,15 @@
 #ifndef UTILS_LIB_H
 #define UTILS_LIB_H
 
-#include <Adafruit_NeoPixel.h>
+#include <Arduino.h>
+
+typedef enum {
+  NONE =  0,
+  RED =  16711680,
+  GREEN =  65280,
+  BLUE =  255,
+  WHITE =  16777216,
+} MainColors;
 
 class Utils
 {
@@ -11,11 +19,4 @@ class Utils
         Utils(){};
 };
 
-typedef enum {
-  NONE = Adafruit_NeoPixel::Color(0, 0, 0),
-  RED = Adafruit_NeoPixel::Color(255, 0, 0),
-  GREEN = Adafruit_NeoPixel::Color(0, 255, 0),
-  BLUE = Adafruit_NeoPixel::Color(0, 0, 255),
-  WHITE = Adafruit_NeoPixel::Color(255, 255, 255),
-} MainColors;
 #endif
