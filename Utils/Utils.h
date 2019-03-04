@@ -8,7 +8,7 @@ typedef enum {
   MAIN_RED =  16711680,
   MAIN_GREEN =  65280,
   MAIN_BLUE =  255,
-  MAIN_WHITE =  16777216,
+  MAIN_WHITE =  16777215,
 } MainColors;
 
 class Utils
