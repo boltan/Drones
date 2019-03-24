@@ -7,13 +7,13 @@
 
 typedef struct{
     byte length;
-    byte type;    
+    byte type;
 }MessageHeader;
 
 class Comms
 {
     private:
-         SoftwareSerial _serial;         
+         SoftwareSerial _serial;
          byte *pRecieve = nullptr;
          byte *endRecieve = pRecieve - 1;
          bool gotLength = false;
@@ -22,7 +22,7 @@ class Comms
     protected:
         void SendMessage(MessageHeader* message);
         bool ReceiveMessage(MessageHeader* message);
-        void virtual DispatchMessage(MessageHeader* message) = 0;        
+        void virtual DispatchMessage(MessageHeader* message) = 0;
     public:
         Comms(uint8_t rx, uint8_t tx);
         void PollMessage();
@@ -59,56 +59,56 @@ typedef struct{
 } AngularOrientation;
 
 typedef struct{
-   MessageHeader header; 
-}TemperatureRequest;
+   MessageHeader header;
+} TemperatureRequest;
 
 typedef struct{
-   MessageHeader header; 
-}ColorRequest;
+   MessageHeader header;
+} ColorRequest;
 
 typedef struct{
-   MessageHeader header; 
-}RawColorRequest;
+   MessageHeader header;
+} RawColorRequest;
 
 typedef struct{
-   MessageHeader header; 
-}HeightRequest;
+   MessageHeader header;
+} HeightRequest;
 
 typedef struct{
-   MessageHeader header;   
-}BuzzRequest;
+   MessageHeader header;
+} BuzzRequest;
 
 typedef struct{
-   MessageHeader header;   
-}GyroRequest;
+   MessageHeader header;
+} GyroRequest;
 
 typedef struct{
-   MessageHeader header;    
+   MessageHeader header;
    float temperature;
-}TemperatureResponse;
+} TemperatureResponse;
 
 typedef struct{
    MessageHeader header;
    MainColors color;
-}ColorResponse;
-
-typedef struct{
-   MessageHeader header;    
-   rgbColor color;
-}RawColorResponse;
-
-typedef struct{
-   MessageHeader header;    
-   int height;
-}HeightResponse;
+} ColorResponse;
 
 typedef struct{
    MessageHeader header;
-}BuzzResponse;
+   rgbColor color;
+} RawColorResponse;
+
+typedef struct{
+   MessageHeader header;
+   int height;
+} HeightResponse;
+
+typedef struct{
+   MessageHeader header;
+} BuzzResponse;
 
 typedef struct{
    MessageHeader header;
    AngularOrientation angularOrientation;
-}GyroResponse;
+} GyroResponse;
 
 #endif
