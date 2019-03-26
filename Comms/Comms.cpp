@@ -37,7 +37,7 @@ bool Comms::ReceiveMessage(MessageHeader* message)
     }
     if(pRecieve==endRecieve)
     {        
-        gotLength = false;  
+        gotLength = false;
         pRecieve = (byte*)message;
         return true;
     }

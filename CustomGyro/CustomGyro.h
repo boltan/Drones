@@ -3,7 +3,7 @@
 
 #include <MPU6050.h>
 
-#define timeStep 0.2
+#define timeStep 2
 class CustomGyro
 {
     private:
