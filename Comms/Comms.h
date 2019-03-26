@@ -44,6 +44,8 @@ enum MessageTypes
     RESPONSE_BUZZ_OFF = 12,
     REQUEST_ANGULAR_ORIENTATION = 13,
     RESPONSE_ANGULAR_ORIENTATION = 14,
+    REQUEST_SERVO_DROP = 15,
+    RESPONSE_SERVO_DROP = 16,
 };
 
 typedef struct {
@@ -84,6 +86,15 @@ typedef struct{
 
 typedef struct{
    MessageHeader header;
+   ServoColors servoColor;
+}ServoRequest;
+
+// end of requests
+
+// start of responses
+
+typedef struct{
+   MessageHeader header;
    float temperature;
 } TemperatureResponse;
 
@@ -110,5 +121,12 @@ typedef struct{
    MessageHeader header;
    AngularOrientation angularOrientation;
 } GyroResponse;
+
+typedef struct{
+   MessageHeader header;
+   byte state;
+} ServoResponse;
+
+// end of responses
 
 #endif

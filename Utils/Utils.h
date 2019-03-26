@@ -11,6 +11,18 @@ typedef enum {
   MAIN_WHITE =  16777215,
 } MainColors;
 
+typedef enum {
+    SERVO_RED = 1,
+    SERVO_GREEN = 2,
+    SERVO_BLUE = 3,
+} ServoColors;
+
+typedef enum{
+    NEED_TO_LOAD,
+    NOT_LOADED,
+    LOADED,
+    DROPPED,
+} BallStates;
 class Utils
 {
     public:
