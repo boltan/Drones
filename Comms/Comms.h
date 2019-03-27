@@ -124,7 +124,7 @@ typedef struct{
 
 typedef struct{
    MessageHeader header;
-   byte state;
+   BallStates state;
 } ServoResponse;
 
 // end of responses
