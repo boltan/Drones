@@ -12,17 +12,19 @@ typedef enum {
 } MainColors;
 
 typedef enum {
-    SERVO_RED = 1,
-    SERVO_GREEN = 2,
-    SERVO_BLUE = 3,
+    SERVO_RED = 0,
+    SERVO_GREEN = 1,
+    SERVO_BLUE = 2,
 } ServoColors;
 
 typedef enum{
-    NEED_TO_LOAD,
-    NOT_LOADED,
-    LOADED,
-    DROPPED,
+    
+    NOT_LOADED = 0,
+    NEED_TO_LOAD = 1,
+    LOADED = 2,
+    DROPPED = 3,
 } BallStates;
+
 class Utils
 {
     public:
