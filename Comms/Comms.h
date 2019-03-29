@@ -1,8 +1,7 @@
 #ifndef Comms_H
 #define Comms_H
 
-#include <Arduino.h>
-#include <SoftwareSerial.h>
+#include <BasicSerial.h>
 #include <Utils.h>
 
 typedef struct{
@@ -13,18 +12,22 @@ typedef struct{
 class Comms
 {
     private:
-         SoftwareSerial _serial;
+         BasicSerial _serial;   
          byte *pRecieve = nullptr;
          byte *endRecieve = pRecieve - 1;
          bool gotLength = false;
          byte msgBuffer[20];
-         MessageHeader *pMainMessage;
+         MessageHeader *pMainMessage = (MessageHeader *)msgBuffer;
     protected:
         void SendMessage(MessageHeader* message);
         bool ReceiveMessage(MessageHeader* message);
         void virtual DispatchMessage(MessageHeader* message) = 0;
     public:
-        Comms(uint8_t rx, uint8_t tx);
+         #ifdef ARDUINO_BOARD
+            Comms(uint8_t rx, uint8_t tx):_serial(rx, tx){}
+         #else
+            Comms():_serial(){}
+         #endif
         void PollMessage();
 };
 
@@ -60,73 +63,74 @@ typedef struct{
    float yaw;
 } AngularOrientation;
 
-typedef struct{
-   MessageHeader header;
-} TemperatureRequest;
+/*start of requests*/
 
 typedef struct{
    MessageHeader header;
-} ColorRequest;
+}TemperatureRequest;
 
 typedef struct{
    MessageHeader header;
-} RawColorRequest;
+}ColorRequest;
 
 typedef struct{
    MessageHeader header;
-} HeightRequest;
+}RawColorRequest;
 
 typedef struct{
    MessageHeader header;
-} BuzzRequest;
+}HeightRequest;
 
 typedef struct{
    MessageHeader header;
-} GyroRequest;
+}BuzzRequest;
+
+typedef struct{
+   MessageHeader header;
+}GyroRequest;
 
 typedef struct{
    MessageHeader header;
    ServoColors servoColor;
 }ServoRequest;
 
-// end of requests
-
-// start of responses
+/*end of requests*/
+/*start of responses*/
 
 typedef struct{
    MessageHeader header;
    float temperature;
-} TemperatureResponse;
+}TemperatureResponse;
 
 typedef struct{
    MessageHeader header;
    MainColors color;
-} ColorResponse;
+}ColorResponse;
 
 typedef struct{
    MessageHeader header;
    rgbColor color;
-} RawColorResponse;
+}RawColorResponse;
 
 typedef struct{
    MessageHeader header;
    int height;
-} HeightResponse;
+}HeightResponse;
 
 typedef struct{
    MessageHeader header;
-} BuzzResponse;
+}BuzzResponse;
 
 typedef struct{
    MessageHeader header;
    AngularOrientation angularOrientation;
-} GyroResponse;
+}GyroResponse;
 
 typedef struct{
    MessageHeader header;
    BallStates state;
-} ServoResponse;
+}ServoResponse;
 
-// end of responses
+/*end of responses*/
 
 #endif
