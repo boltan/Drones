@@ -12,11 +12,11 @@ typedef struct{
 class Comms
 {
     private:
+         byte msgBuffer[20];
          BasicSerial _serial;   
          byte *pRecieve = nullptr;
          byte *endRecieve = pRecieve - 1;
          bool gotLength = false;
-         byte msgBuffer[20];
          MessageHeader *pMainMessage = (MessageHeader *)msgBuffer;
     protected:
         void SendMessage(MessageHeader* message);
@@ -114,7 +114,7 @@ typedef struct{
 
 typedef struct{
    MessageHeader header;
-   int height;
+   uint16_t height;
 }HeightResponse;
 
 typedef struct{
