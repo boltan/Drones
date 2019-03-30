@@ -13,7 +13,7 @@ class Comms
 {
     private:
          byte msgBuffer[20];
-         BasicSerial _serial;   
+         BasicSerial _serial;
          byte *pRecieve = nullptr;
          byte *endRecieve = pRecieve - 1;
          bool gotLength = false;

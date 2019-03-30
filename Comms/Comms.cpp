@@ -7,6 +7,10 @@ void Comms::SendMessage(MessageHeader* message)
     while(p < end)
     {
         _serial.write(*p);
+        if(Serial)
+        {
+        	Serial.println("sent " + String(*p));
+        }
         p++;
     }
 }
@@ -20,12 +24,17 @@ bool Comms::ReceiveMessage(MessageHeader* message)
             pRecieve = (byte*)message;
             *pRecieve = _serial.read();
             gotLength = true;
-            endRecieve = pRecieve + (message->length);            
+            endRecieve = pRecieve + (message->length);
+            Serial.println("recived " + String(*pRecieve));
             pRecieve++;
         }
         else
         {
             *pRecieve = _serial.read();
+            if(Serial)
+            {
+            	Serial.println("recived " + String(*pRecieve));
+            }
             pRecieve++;
         }
     }
