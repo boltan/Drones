@@ -33,6 +33,7 @@ class Comms
 
 enum MessageTypes
 {
+    DRONE_CONNECTED = 0,
     REQUEST_FOR_TEMPERATURE = 1,
     RESPONSE_FOR_TEMPERATURE = 2,
     REQUEST_FOR_COLOR = 3,
@@ -50,6 +51,10 @@ enum MessageTypes
     REQUEST_SERVO_DROP = 15,
     RESPONSE_SERVO_DROP = 16,
 };
+
+typedef struct {
+   MessageHeader header;
+} DroneConnected;
 
 typedef struct {
   uint16_t r;
