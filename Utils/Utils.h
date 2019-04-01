@@ -9,6 +9,7 @@ typedef enum {
   MAIN_GREEN =  65280,
   MAIN_BLUE =  255,
   MAIN_WHITE =  16777215,
+  MAIN_INTERMEDIATE = 300,
 } MainColors;
 
 typedef enum {

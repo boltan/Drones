@@ -91,7 +91,7 @@ typedef struct{
 
 typedef struct{
    MessageHeader header;
-   ServoColors servoColor;
+   byte servoColor;
 }ServoRequest;
 
 /*end of requests*/
@@ -104,7 +104,7 @@ typedef struct{
 
 typedef struct{
    MessageHeader header;
-   MainColors color;
+   uint32_t color;
 }ColorResponse;
 
 typedef struct{
@@ -128,7 +128,7 @@ typedef struct{
 
 typedef struct{
    MessageHeader header;
-   BallStates state;
+   byte state;
 }ServoResponse;
 
 /*end of responses*/
