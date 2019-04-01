@@ -58,9 +58,9 @@ typedef struct {
 } rgbColor;
 
 typedef struct{
-   float pitch;
-   float roll;
-   float yaw;
+   int16_t pitch;
+   int16_t roll;
+   int16_t yaw;
 } AngularOrientation;
 
 /*start of requests*/

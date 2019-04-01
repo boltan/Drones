@@ -18,7 +18,6 @@ typedef enum {
 } ServoColors;
 
 typedef enum{
-    
     NOT_LOADED = 0,
     NEED_TO_LOAD = 1,
     LOADED = 2,
