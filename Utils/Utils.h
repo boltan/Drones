@@ -25,6 +25,18 @@ typedef enum{
     DROPPED = 3,
 } BallStates;
 
+typedef struct {
+  uint16_t r;
+  uint16_t g;
+  uint16_t b;
+} rgbColor;
+
+typedef struct{
+   int16_t pitch;
+   int16_t roll;
+   int16_t yaw;
+} AngularOrientation;
+
 class Utils
 {
     public:
